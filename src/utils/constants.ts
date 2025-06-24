@@ -59,6 +59,7 @@ export const SCREENS = {
   INVENTORY: 'inventory',
   SAVINGS: 'savings',
   BENEFITS: 'benefits',
+  REPORTS: 'reports',
   
   // Group flows
   PANDERO: 'pandero',

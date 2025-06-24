@@ -1,5 +1,5 @@
-import React from 'react';
-import { Download, Calendar } from 'lucide-react';
+import React, { useState } from 'react';
+import { Download, Calendar, Loader2 } from 'lucide-react';
 import { Header, Card } from '../../components';
 import { mockUser } from '../../utils/mockData';
 
@@ -8,9 +8,14 @@ interface ExportProfileScreenProps {
 }
 
 const ExportProfileScreen: React.FC<ExportProfileScreenProps> = ({ goBack }) => {
+  const [exporting, setExporting] = useState<string | null>(null);
+
   const handleExport = (format: string) => {
-    // Simulate export
-    alert(`Exportando perfil en formato ${format.toUpperCase()}...`);
+    setExporting(format);
+    setTimeout(() => {
+      setExporting(null);
+      alert(`Tu perfil en ${format.toUpperCase()} ha comenzado a descargarse.`);
+    }, 2000);
   };
 
   return (
@@ -53,8 +58,8 @@ const ExportProfileScreen: React.FC<ExportProfileScreenProps> = ({ goBack }) => 
           <h3 className="font-semibold text-text-primary mb-3">Formatos Disponibles</h3>
           <div className="space-y-3">
             <div 
-              onClick={() => handleExport('pdf')}
-              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100"
+              onClick={() => !exporting && handleExport('pdf')}
+              className={`flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 cursor-pointer ${exporting ? 'opacity-50' : 'hover:bg-gray-100'}`}
             >
               <div className="flex items-center">
                 <Download className="text-red-600 mr-3" size={20} />
@@ -63,10 +68,11 @@ const ExportProfileScreen: React.FC<ExportProfileScreenProps> = ({ goBack }) => 
                   <p className="text-sm text-gray-600">Ideal para entidades financieras</p>
                 </div>
               </div>
+              {exporting === 'pdf' && <Loader2 className="animate-spin text-primary" />}
             </div>
             <div 
-              onClick={() => handleExport('excel')}
-              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100"
+              onClick={() => !exporting && handleExport('excel')}
+              className={`flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 cursor-pointer ${exporting ? 'opacity-50' : 'hover:bg-gray-100'}`}
             >
               <div className="flex items-center">
                 <Download className="text-green-600 mr-3" size={20} />
@@ -75,6 +81,7 @@ const ExportProfileScreen: React.FC<ExportProfileScreenProps> = ({ goBack }) => 
                   <p className="text-sm text-gray-600">Para análisis personal</p>
                 </div>
               </div>
+              {exporting === 'excel' && <Loader2 className="animate-spin text-primary" />}
             </div>
           </div>
         </Card>

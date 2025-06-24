@@ -8,6 +8,9 @@ interface InventoryScreenProps {
 }
 
 const InventoryScreen: React.FC<InventoryScreenProps> = ({ goBack }) => {
+  const lowStockThreshold = 5;
+  const lowStockProducts = mockProducts.filter(p => p.stock < lowStockThreshold);
+
   return (
     <div className="min-h-screen bg-background-secondary">
       <Header
@@ -34,19 +37,33 @@ const InventoryScreen: React.FC<InventoryScreenProps> = ({ goBack }) => {
                 </div>
                 <div className="text-right">
                   <p className="font-semibold text-text-primary">S/ {product.price}</p>
-                  <p className="text-sm text-success">En stock</p>
+                  <p className={`text-sm ${product.stock > 0 ? 'text-success' : 'text-danger'}`}>
+                    {product.stock > 0 ? `${product.stock} en stock` : 'Agotado'}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </Card>
 
-        <Card className="bg-warning/10 border border-warning/20">
-          <h3 className="font-semibold text-warning mb-2">📦 Próximamente</h3>
-          <p className="text-sm text-warning/90">
-            Alertas automáticas de reposición basadas en tus ventas registradas
-          </p>
-        </Card>
+        {lowStockProducts.length > 0 && (
+          <Card className="bg-danger/10 border border-danger/20">
+            <h3 className="font-semibold text-danger mb-3">🚨 Alertas de Reposición</h3>
+            <div className="space-y-3">
+              {lowStockProducts.map((product) => (
+                <div key={product.id} className="flex items-center justify-between p-3 bg-background-secondary rounded-lg">
+                  <div>
+                    <p className="font-medium text-text-primary">{product.name}</p>
+                    <p className="text-sm text-danger">{`Solo quedan ${product.stock} unidades`}</p>
+                  </div>
+                  <button className="bg-primary text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors">
+                    Pedir
+                  </button>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
       </div>
     </div>
   );

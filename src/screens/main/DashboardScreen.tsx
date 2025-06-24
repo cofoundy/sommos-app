@@ -3,7 +3,7 @@ import { PiggyBank, TrendingUp, User } from 'lucide-react';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import BottomTabBar from '../../components/BottomTabBar';
-import { mockUser, mockSales, mockSavings } from '../../utils/mockData';
+import { mockUser, mockSales, mockSavings, mockPanderoMembers } from '../../utils/mockData';
 import { SCREENS } from '../../utils/constants';
 
 interface DashboardScreenProps {
@@ -14,6 +14,7 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigateTo }) => {
   // Calculate totals
   const todaysSales = mockSales.filter(sale => sale.date === '2024-01-15');
   const totalSavings = mockSavings.reduce((sum, saving) => sum + saving.amount, 0);
+  const unpaidMembers = mockPanderoMembers.filter(member => !member.hasPaid);
 
   return (
     <div className="min-h-screen bg-background-secondary pb-20">
@@ -29,8 +30,11 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigateTo }) => {
               <p className="text-sm text-gray-600">Nivel: {mockUser.level}</p>
             </div>
           </div>
-          <button onClick={() => navigateTo(SCREENS.PROFILE)}>
+          <button onClick={() => navigateTo(SCREENS.PROFILE)} className="relative">
             <User className="text-gray-600" size={24} />
+            {unpaidMembers.length > 0 && (
+              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-danger ring-2 ring-white" />
+            )}
           </button>
         </div>
       </div>
@@ -70,12 +74,19 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigateTo }) => {
         {/* Quick actions */}
         <Card className="mb-6">
           <h3 className="font-semibold text-text-primary mb-3">Acciones Rápidas</h3>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             <Button
               onClick={() => navigateTo(SCREENS.SALES_REGISTER)}
               className="text-sm"
             >
               Registrar Venta
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => navigateTo(SCREENS.REPORTS)}
+              className="text-sm"
+            >
+              Ver Reportes
             </Button>
             <Button
               variant="secondary"
@@ -102,6 +113,23 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigateTo }) => {
                 </div>
               ))}
             </div>
+          </Card>
+        )}
+
+        {/* Reminders */}
+        {unpaidMembers.length > 0 && (
+          <Card className="mb-6 bg-info/10 border border-info/20">
+            <h3 className="font-semibold text-info mb-3">Recordatorios Pendientes</h3>
+            <p className="text-sm text-info/90 mb-3">
+              {`Tienes ${unpaidMembers.length} miembro(s) que aún no han realizado su aporte.`}
+            </p>
+            <Button
+              variant="secondary"
+              onClick={() => navigateTo(SCREENS.PANDERO)}
+              className="text-sm w-full"
+            >
+              Ver Grupo y Enviar Recordatorios
+            </Button>
           </Card>
         )}
 

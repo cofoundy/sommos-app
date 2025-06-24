@@ -1,6 +1,6 @@
 // Mock data for SOMMOS app development
 
-import { User, Sale, SavingsEntry, PanderoMember, Product } from './types';
+import { User, Sale, SavingsEntry, PanderoMember, Product, Expense } from './types';
 import { USER_LEVELS } from './constants';
 
 export const mockUser: User = {
@@ -42,6 +42,30 @@ export const mockSales: Sale[] = [
     price: 8.0, 
     date: '2024-01-15', 
     time: '12:00' 
+  }
+];
+
+export const mockExpenses: Expense[] = [
+  {
+    id: '1',
+    description: 'Pago de luz',
+    amount: 150,
+    date: '2024-01-10',
+    category: 'services'
+  },
+  {
+    id: '2',
+    description: 'Compra de bolsas',
+    amount: 25,
+    date: '2024-01-12',
+    category: 'supplies'
+  },
+  {
+    id: '3',
+    description: 'Pago de internet',
+    amount: 80,
+    date: '2024-01-14',
+    category: 'services'
   }
 ];
 
@@ -112,7 +136,7 @@ export const mockProducts: Product[] = [
     price: 2.5, 
     supplier: 'ISM', 
     image: 'https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg',
-    inStock: true
+    stock: 15
   },
   { 
     id: '2', 
@@ -121,7 +145,7 @@ export const mockProducts: Product[] = [
     price: 4.2, 
     supplier: 'Gloria', 
     image: 'https://images.pexels.com/photos/236010/pexels-photo-236010.jpeg',
-    inStock: true
+    stock: 8
   },
   { 
     id: '3', 
@@ -130,7 +154,7 @@ export const mockProducts: Product[] = [
     price: 1.5, 
     supplier: 'Bimbo', 
     image: 'https://images.pexels.com/photos/209206/pexels-photo-209206.jpeg',
-    inStock: true
+    stock: 3
   },
   { 
     id: '4', 
@@ -139,7 +163,7 @@ export const mockProducts: Product[] = [
     price: 3.8, 
     supplier: 'Costeño', 
     image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg',
-    inStock: true
+    stock: 25
   },
   { 
     id: '5', 
@@ -148,7 +172,7 @@ export const mockProducts: Product[] = [
     price: 5.5, 
     supplier: 'Alicorp', 
     image: 'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg',
-    inStock: true
+    stock: 4
   },
   { 
     id: '6', 
@@ -157,6 +181,6 @@ export const mockProducts: Product[] = [
     price: 8.9, 
     supplier: 'P&G', 
     image: 'https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg',
-    inStock: true
+    stock: 12
   }
 ]; 

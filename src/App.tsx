@@ -19,6 +19,7 @@ import SavingsScreen from './screens/business/SavingsScreen';
 import InventoryScreen from './screens/business/InventoryScreen';
 import BenefitsScreen from './screens/business/BenefitsScreen';
 import SetGoalScreen from './screens/business/SetGoalScreen';
+import ReportsScreen from './screens/business/ReportsScreen';
 
 // Group screens
 import PanderoScreen from './screens/group/PanderoScreen';
@@ -71,6 +72,9 @@ const App: React.FC = () => {
       
       case SCREENS.SET_GOAL:
         return <SetGoalScreen goBack={goBack} />;
+      
+      case SCREENS.REPORTS:
+        return <ReportsScreen goBack={goBack} />;
       
       case SCREENS.PANDERO:
         return <PanderoScreen goBack={goBack} />;

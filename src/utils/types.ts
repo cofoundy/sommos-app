@@ -1,3 +1,5 @@
+import React from 'react';
+
 // TypeScript interfaces for SOMMOS app
 
 export interface User {
@@ -46,7 +48,15 @@ export interface Product {
   price: number;
   supplier: string;
   image: string;
-  inStock?: boolean;
+  stock: number;
+}
+
+export interface Expense {
+  id: string;
+  description: string;
+  amount: number;
+  date: string;
+  category: 'services' | 'supplies' | 'other';
 }
 
 export interface CreditApplication {

@@ -8,6 +8,10 @@ interface PanderoScreenProps {
 }
 
 const PanderoScreen: React.FC<PanderoScreenProps> = ({ goBack }) => {
+  const totalMembers = mockPanderoMembers.length;
+  const totalAmount = mockPanderoMembers.reduce((sum, member) => sum + member.amount, 0);
+  const allPaid = mockPanderoMembers.every(member => member.hasPaid);
+
   return (
     <div className="min-h-screen bg-background-secondary">
       <Header
@@ -22,17 +26,23 @@ const PanderoScreen: React.FC<PanderoScreenProps> = ({ goBack }) => {
           <h3 className="font-semibold text-text-primary mb-3">Estado del Grupo</h3>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-primary">5</p>
+              <p className="text-2xl font-bold text-primary">{totalMembers}</p>
               <p className="text-sm text-gray-600">Miembros</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-success">S/ 250</p>
+              <p className="text-2xl font-bold text-success">S/ {totalAmount}</p>
               <p className="text-sm text-gray-600">Total mensual</p>
             </div>
           </div>
-          <div className="bg-green-50 p-3 rounded-lg">
-            <p className="text-sm text-green-800 font-medium">✅ Todos los miembros han aportado este mes</p>
-          </div>
+          {allPaid ? (
+            <div className="bg-green-50 p-3 rounded-lg">
+              <p className="text-sm text-green-800 font-medium">✅ Todos los miembros han aportado este mes</p>
+            </div>
+          ) : (
+            <div className="bg-warning/10 p-3 rounded-lg">
+              <p className="text-sm text-warning/90 font-medium">Algunos miembros aún no han realizado su aporte.</p>
+            </div>
+          )}
         </Card>
 
         <Card>
