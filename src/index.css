@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for SOMMOS app */
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f8fafc;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom scrollbar for better mobile experience */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A575E8;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8647E0;
+}
+
+/* Ensure proper touch targets on mobile */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Custom focus styles for accessibility */
+button:focus, input:focus, select:focus {
+  outline: 2px solid #A575E8;
+  outline-offset: 2px;
+}
+
+/* Animation for loading states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom shadow for cards */
+.card-shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.card-shadow:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive design improvements */
+@media (max-width: 375px) {
+  .text-3xl {
+    font-size: 1.7rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.4rem;
+  }
+  
+  .p-6 {
+    padding: 1rem;
+  }
+  
+  .p-8 {
+    padding: 1.5rem;
+  }
+}
+
+/* Ensure proper contrast for text */
+.text-gray-600 {
+  color: #6b7280;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+/* Custom purple colors matching the brand */
+.bg-purple-600 {
+  background-color: #A575E8;
+}
+
+.bg-purple-700 {
+  background-color: #8647E0;
+}
+
+.text-purple-600 {
+  color: #A575E8;
+}
+
+.bg-purple-50 {
+  background-color: #E9DBFE;
+}
+
+.bg-purple-100 {
+  background-color: #E9DBFE;
+}
+
+.border-purple-500 {
+  border-color: #A575E8;
+}
+
+.ring-purple-500 {
+  --tw-ring-color: #A575E8;
+}
