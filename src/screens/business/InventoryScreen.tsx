@@ -2,9 +2,11 @@ import React from 'react';
 import { Package } from 'lucide-react';
 import { Header, Card } from '../../components';
 import { mockProducts } from '../../utils/mockData';
+import { SCREENS } from '../../utils/constants';
 
 interface InventoryScreenProps {
   goBack: () => void;
+  navigateTo: (screen: string) => void;
 }
 
 const InventoryScreen: React.FC<InventoryScreenProps> = ({ goBack }) => {

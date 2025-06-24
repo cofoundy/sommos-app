@@ -46,20 +46,30 @@ const CreditScreen: React.FC<CreditScreenProps> = ({ navigateTo }) => {
           </div>
         </Card>
 
-        <Button
-          onClick={() => navigateTo(SCREENS.CREDIT_APPLICATION)}
-          className="w-full mb-3"
-        >
-          Solicitar Crédito Personal
-        </Button>
+        <div className="space-y-3">
+          <Button
+            onClick={() => navigateTo(SCREENS.CREDIT_APPLICATION)}
+            className="w-full"
+          >
+            Solicitar Crédito Personal
+          </Button>
 
-        <Button
-          variant="secondary"
-          onClick={() => navigateTo(SCREENS.EXPORT_PROFILE)}
-          className="w-full"
-        >
-          Exportar Perfil Financiero
-        </Button>
+          <Button
+            variant="secondary"
+            onClick={() => navigateTo(SCREENS.FINANCIAL_REPORTS)}
+            className="w-full"
+          >
+            Ver Reportes Financieros
+          </Button>
+
+          <Button
+            variant="secondary"
+            onClick={() => navigateTo(SCREENS.EXPORT_PROFILE)}
+            className="w-full"
+          >
+            Exportar Perfil Financiero
+          </Button>
+        </div>
       </div>
 
       <BottomTabBar currentTab={SCREENS.CREDIT} navigateTo={navigateTo} />

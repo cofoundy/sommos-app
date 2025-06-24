@@ -1,5 +1,5 @@
 import React from 'react';
-import { PiggyBank, TrendingUp, User } from 'lucide-react';
+import { PiggyBank, TrendingUp, User, Bell } from 'lucide-react';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import BottomTabBar from '../../components/BottomTabBar';
