@@ -49,6 +49,7 @@ export interface Product {
   supplier: string;
   image: string;
   stock: number;
+  description: string;
 }
 
 export interface Expense {
@@ -81,6 +82,7 @@ export interface HeaderProps {
   subtitle?: string;
   showBackButton?: boolean;
   onBackPress?: () => void;
+  isTransparent?: boolean;
 }
 
 export interface ButtonProps {

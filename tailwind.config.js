@@ -6,10 +6,11 @@ export default {
       colors: {
         // SOMMOS color palette
         primary: {
-          DEFAULT: '#A575E8',
-          light: '#E9DBFE',
-          dark: '#8647E0',
+          DEFAULT: '#6D28D9',
+          light: '#A575E8',
+          dark: '#5B21B6',
         },
+        card: '#FFFFFF',
         surface: '#FFFFFF',
         text: {
           primary: '#222745',
@@ -19,7 +20,7 @@ export default {
         error: '#EF4444',
         info: '#3B82F6',
         background: {
-          primary: '#FFFFFF',
+          primary: '#6D28D9',
           secondary: '#F9FAFB',
         },
         border: {

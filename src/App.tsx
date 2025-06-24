@@ -77,7 +77,7 @@ const App: React.FC = () => {
         return <ReportsScreen goBack={goBack} />;
       
       case SCREENS.PANDERO:
-        return <PanderoScreen goBack={goBack} />;
+        return <PanderoScreen goBack={goBack} navigateTo={navigateTo} />;
       
       case SCREENS.CREDIT_PRODUCTS:
         return <CreditProductsScreen goBack={goBack} />;
@@ -103,7 +103,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-surface min-h-screen">
+    <div className="max-w-md mx-auto bg-background-primary min-h-screen">
       {renderScreen()}
     </div>
   );

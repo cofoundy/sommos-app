@@ -7,19 +7,34 @@ const Header: React.FC<HeaderProps> = ({
   subtitle,
   showBackButton = false,
   onBackPress,
+  isTransparent = false,
 }) => {
+  const headerClasses = isTransparent
+    ? 'bg-transparent p-4'
+    : 'bg-surface shadow-sm p-4';
+  
+  const titleClasses = isTransparent
+    ? 'text-xl font-bold text-white'
+    : 'text-xl font-bold text-text-primary';
+
+  const subtitleClasses = isTransparent
+    ? 'text-white/80'
+    : 'text-gray-600';
+  
+  const iconClasses = isTransparent ? 'text-white' : 'text-text-primary';
+
   return (
-    <div className="bg-surface shadow-sm p-4">
+    <div className={headerClasses}>
       <div className="flex items-center">
         {showBackButton && onBackPress && (
           <button onClick={onBackPress} className="mr-4">
-            <ArrowLeft className="text-text-primary" size={24} />
+            <ArrowLeft className={iconClasses} size={24} />
           </button>
         )}
         <div>
-          <h1 className="text-xl font-bold text-text-primary">{title}</h1>
+          <h1 className={titleClasses}>{title}</h1>
           {subtitle && (
-            <p className="text-gray-600">{subtitle}</p>
+            <p className={subtitleClasses}>{subtitle}</p>
           )}
         </div>
       </div>

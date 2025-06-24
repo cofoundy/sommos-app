@@ -1,55 +1,61 @@
 import React from 'react';
-import { Header, Card } from '../../components';
+import { Header, Card, Button } from '../../components';
 import { mockProducts } from '../../utils/mockData';
+
+// Mock logos - in a real app, these would be imported or managed better
+const ismLogo = 'https://i.imgur.com/J8mJ333.png'; // Using a reliable public URL
+const gloriaLogo = 'https://i.imgur.com/CoS794J.png'; // Using a reliable public URL
+
+const supplierLogos: { [key: string]: string } = {
+  'ISM': ismLogo,
+  'Gloria': gloriaLogo,
+};
 
 interface CreditProductsScreenProps {
   goBack: () => void;
 }
 
 const CreditProductsScreen: React.FC<CreditProductsScreenProps> = ({ goBack }) => {
+  const creditProducts = mockProducts.filter(p => p.supplier === 'ISM' || p.supplier === 'Gloria');
+
   return (
-    <div className="min-h-screen bg-background-secondary">
+    <div className="min-h-screen bg-transparent text-text-primary">
       <Header
-        title="Productos a Crédito"
-        subtitle="Catálogo de proveedores"
+        title="Productos con crédito"
+        subtitle=""
         showBackButton
         onBackPress={goBack}
+        isTransparent
       />
 
-      <div className="p-4">
-        <Card className="bg-info/10 border border-info/20 mb-4">
-          <h3 className="font-semibold text-info mb-2">💳 Crédito Disponible</h3>
-          <p className="text-2xl font-bold text-info">S/ 500</p>
-          <p className="text-sm text-info">Pago en 30 días sin intereses</p>
-        </Card>
-
-        <div className="grid grid-cols-2 gap-4">
-          {mockProducts.map((product) => (
-            <Card key={product.id} className="p-4">
-              <div className="w-full h-24 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+      <div className="p-4 space-y-4">
+        {creditProducts.map((product) => (
+          <Card key={product.id} className="bg-card shadow-lg p-4">
+            <div className="flex items-center space-x-4">
+              <div className="w-1/3 flex flex-col justify-center">
                 <img 
+                  src={supplierLogos[product.supplier]} 
+                  alt={product.supplier}
+                  className="w-12 h-12 object-contain mb-2"
+                />
+                <p className="font-bold text-lg text-text-primary">{product.name}</p>
+                <p className="text-sm text-gray-600">{product.description}</p>
+              </div>
+              <div className="w-1/3 flex justify-center">
+                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  className="w-auto h-24 object-contain"
                 />
               </div>
-              <h4 className="font-semibold text-text-primary text-sm mb-1">{product.name}</h4>
-              <p className="text-xs text-gray-600 mb-2">{product.supplier}</p>
-              <p className="font-bold text-primary mb-3">S/ {product.price}</p>
-              <div className="w-full bg-gray-200 text-gray-600 py-2 rounded-lg text-xs font-medium text-center">
-                Disponible próximamente
+              <div className="w-1/3">
+                <Button onClick={() => {}} className="w-full bg-primary-light text-primary font-bold">
+                  Pedir a crédito
+                </Button>
               </div>
-            </Card>
-          ))}
-        </div>
-
-        <Card className="mt-4 bg-yellow-50 border border-yellow-200">
-          <h3 className="font-semibold text-yellow-800 mb-2">🚀 Próximamente</h3>
-          <p className="text-sm text-yellow-700">
-            Sistema de pedidos a crédito con tus proveedores favoritos. 
-            Mantén tu registro de ventas al día para acceder a mejores condiciones.
-          </p>
-        </Card>
+            </div>
+          </Card>
+        ))}
       </div>
     </div>
   );

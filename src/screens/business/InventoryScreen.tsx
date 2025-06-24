@@ -1,6 +1,6 @@
 import React from 'react';
-import { Package } from 'lucide-react';
-import { Header, Card } from '../../components';
+import { Package, ShoppingCart } from 'lucide-react';
+import { Header, Card, Button } from '../../components';
 import { mockProducts } from '../../utils/mockData';
 
 interface InventoryScreenProps {
@@ -8,62 +8,48 @@ interface InventoryScreenProps {
 }
 
 const InventoryScreen: React.FC<InventoryScreenProps> = ({ goBack }) => {
-  const lowStockThreshold = 5;
-  const lowStockProducts = mockProducts.filter(p => p.stock < lowStockThreshold);
+  const lowStockProducts = mockProducts.filter(p => p.stock < 10);
 
   return (
-    <div className="min-h-screen bg-background-secondary">
+    <div className="min-h-screen bg-transparent text-white">
       <Header
-        title="Inventario"
-        subtitle="Control de productos"
+        title="Recomendación de reposición"
+        subtitle=""
         showBackButton
         onBackPress={goBack}
+        isTransparent
       />
 
       <div className="p-4">
-        <Card className="mb-4">
-          <h3 className="font-semibold text-text-primary mb-3">Productos Populares</h3>
-          <div className="space-y-3">
-            {mockProducts.slice(0, 4).map((product) => (
-              <div key={product.id} className="flex items-center justify-between p-3 bg-background-secondary rounded-lg">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center mr-3">
-                    <Package className="text-primary" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-medium text-text-primary">{product.name}</p>
-                    <p className="text-sm text-gray-600">{product.category}</p>
-                  </div>
+        <div className="bg-black/20 text-white font-semibold p-2 rounded-full text-center text-sm mb-4">
+          Productos más vendidos esta semana
+        </div>
+
+        <div className="space-y-4">
+          {lowStockProducts.map((product) => (
+            <Card key={product.id} className="bg-card/90 backdrop-blur-sm border border-white/10 p-4">
+              <div className="flex items-center space-x-4">
+                <div className="w-1/4">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-20 object-contain rounded-lg"
+                  />
                 </div>
-                <div className="text-right">
-                  <p className="font-semibold text-text-primary">S/ {product.price}</p>
-                  <p className={`text-sm ${product.stock > 0 ? 'text-success' : 'text-danger'}`}>
-                    {product.stock > 0 ? `${product.stock} en stock` : 'Agotado'}
-                  </p>
+                <div className="w-1/2">
+                  <p className="font-bold text-lg">{product.name}</p>
+                  <p className="text-xs text-white/80">Ventas altas esta semana</p>
+                  <p className="text-xs text-white/80">Stock actual: {product.stock} unidades</p>
+                </div>
+                <div className="w-1/4">
+                  <Button onClick={() => {}} className="w-full text-sm">
+                    Pedir {10 - product.stock} unidades
+                  </Button>
                 </div>
               </div>
-            ))}
-          </div>
-        </Card>
-
-        {lowStockProducts.length > 0 && (
-          <Card className="bg-danger/10 border border-danger/20">
-            <h3 className="font-semibold text-danger mb-3">🚨 Alertas de Reposición</h3>
-            <div className="space-y-3">
-              {lowStockProducts.map((product) => (
-                <div key={product.id} className="flex items-center justify-between p-3 bg-background-secondary rounded-lg">
-                  <div>
-                    <p className="font-medium text-text-primary">{product.name}</p>
-                    <p className="text-sm text-danger">{`Solo quedan ${product.stock} unidades`}</p>
-                  </div>
-                  <button className="bg-primary text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors">
-                    Pedir
-                  </button>
-                </div>
-              ))}
-            </div>
-          </Card>
-        )}
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

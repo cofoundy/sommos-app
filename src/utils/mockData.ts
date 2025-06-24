@@ -131,7 +131,8 @@ export const mockPanderoMembers: PanderoMember[] = [
 export const mockProducts: Product[] = [
   { 
     id: '1', 
-    name: 'Coca Cola 500ml', 
+    name: 'Coca Cola', 
+    description: 'Botella 500ml',
     category: 'Bebidas', 
     price: 2.5, 
     supplier: 'ISM', 
@@ -140,7 +141,8 @@ export const mockProducts: Product[] = [
   },
   { 
     id: '2', 
-    name: 'Leche Gloria 1L', 
+    name: 'Leche Gloria', 
+    description: 'Lata 400g',
     category: 'Lácteos', 
     price: 4.2, 
     supplier: 'Gloria', 
@@ -150,6 +152,7 @@ export const mockProducts: Product[] = [
   { 
     id: '3', 
     name: 'Pan Tostado', 
+    description: 'Paquete 200g',
     category: 'Panadería', 
     price: 1.5, 
     supplier: 'Bimbo', 
@@ -158,7 +161,8 @@ export const mockProducts: Product[] = [
   },
   { 
     id: '4', 
-    name: 'Arroz Superior 1kg', 
+    name: 'Arroz Superior', 
+    description: 'Bolsa 1kg',
     category: 'Granos', 
     price: 3.8, 
     supplier: 'Costeño', 
@@ -167,7 +171,8 @@ export const mockProducts: Product[] = [
   },
   { 
     id: '5', 
-    name: 'Aceite Primor 1L', 
+    name: 'Aceite Primor', 
+    description: 'Botella 1L',
     category: 'Aceites', 
     price: 5.5, 
     supplier: 'Alicorp', 
@@ -176,7 +181,8 @@ export const mockProducts: Product[] = [
   },
   { 
     id: '6', 
-    name: 'Detergente Ariel 1kg', 
+    name: 'Detergente Ariel', 
+    description: 'Bolsa 1kg',
     category: 'Limpieza', 
     price: 8.9, 
     supplier: 'P&G', 

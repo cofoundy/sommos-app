@@ -1,78 +1,71 @@
 import React from 'react';
-import { User, CheckCircle, Clock } from 'lucide-react';
-import { Header, Card } from '../../components';
+import { User } from 'lucide-react';
+import { Header, Card, Button } from '../../components';
 import { mockPanderoMembers } from '../../utils/mockData';
+import { SCREENS } from '../../utils/constants';
 
 interface PanderoScreenProps {
   goBack: () => void;
+  navigateTo: (screen: string) => void;
 }
 
-const PanderoScreen: React.FC<PanderoScreenProps> = ({ goBack }) => {
+const PanderoScreen: React.FC<PanderoScreenProps> = ({ goBack, navigateTo }) => {
   const totalMembers = mockPanderoMembers.length;
   const totalAmount = mockPanderoMembers.reduce((sum, member) => sum + member.amount, 0);
   const allPaid = mockPanderoMembers.every(member => member.hasPaid);
 
   return (
-    <div className="min-h-screen bg-background-secondary">
+    <div className="min-h-screen bg-transparent text-text-primary">
       <Header
-        title="Pandero Digital"
-        subtitle='Grupo "Bodegueros Unidos"'
+        title="Mi grupo de ahorro (Pandero)"
+        subtitle=""
         showBackButton
         onBackPress={goBack}
+        isTransparent
       />
 
       <div className="p-4">
-        <Card className="mb-4">
-          <h3 className="font-semibold text-text-primary mb-3">Estado del Grupo</h3>
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">{totalMembers}</p>
-              <p className="text-sm text-gray-600">Miembros</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-success">S/ {totalAmount}</p>
-              <p className="text-sm text-gray-600">Total mensual</p>
-            </div>
+        <div className="bg-primary-light/30 text-white p-4 rounded-xl mb-4">
+          <p className="text-sm font-semibold mb-2">Tu turno</p>
+          <div className="flex items-center justify-between">
+            <p className="text-lg font-bold">Turno 3 de 6</p>
+            <p className="text-sm">2/6 completados</p>
           </div>
-          {allPaid ? (
-            <div className="bg-green-50 p-3 rounded-lg">
-              <p className="text-sm text-green-800 font-medium">✅ Todos los miembros han aportado este mes</p>
-            </div>
-          ) : (
-            <div className="bg-warning/10 p-3 rounded-lg">
-              <p className="text-sm text-warning/90 font-medium">Algunos miembros aún no han realizado su aporte.</p>
-            </div>
-          )}
-        </Card>
+          <div className="w-full bg-black/20 rounded-full h-2.5 mt-2">
+            <div className="bg-white h-2.5 rounded-full" style={{ width: '45%' }}></div>
+          </div>
+        </div>
 
-        <Card>
-          <h3 className="font-semibold text-text-primary mb-3">Miembros del Grupo</h3>
-          <div className="space-y-3">
-            {mockPanderoMembers.map((member) => (
-              <div key={member.id} className="flex items-center justify-between p-3 bg-background-secondary rounded-lg">
+        <div className="space-y-3">
+          {mockPanderoMembers.map((member) => (
+            <Card key={member.id} className="bg-card shadow-lg">
+              <div className="flex items-center justify-between p-4">
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center mr-3">
-                    <User className="text-primary" size={16} />
+                  <div className="w-10 h-10 bg-primary-light/30 rounded-full flex items-center justify-center mr-3">
+                    <User className="text-primary-dark" size={16} />
                   </div>
                   <div>
                     <p className="font-medium text-text-primary">{member.name}</p>
-                    <p className="text-sm text-gray-600">Turno #{member.turn}</p>
+                    <p className={`text-xs font-semibold uppercase px-2 py-0.5 rounded-full ${
+                      member.hasPaid ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800'
+                    }`}>
+                      {member.hasPaid ? 'CUMPLIDO' : 'MOROSO'}
+                    </p>
                   </div>
                 </div>
-                <div className="text-right flex items-center">
-                  <div className="mr-2">
-                    <p className="font-semibold text-text-primary">S/ {member.amount}</p>
-                  </div>
-                  {member.hasPaid ? (
-                    <CheckCircle className="text-success" size={16} />
-                  ) : (
-                    <Clock className="text-warning" size={16} />
-                  )}
-                </div>
+                <p className="font-semibold text-text-primary text-lg">S/ {member.amount}</p>
               </div>
-            ))}
-          </div>
-        </Card>
+            </Card>
+          ))}
+        </div>
+      </div>
+      <div className="p-4 absolute bottom-0 w-full">
+        <Button
+          onClick={() => navigateTo(SCREENS.CREDIT_PRODUCTS)}
+          className="w-full text-lg py-3"
+        >
+          Ver productos con crédito
+        </Button>
       </div>
     </div>
   );
