@@ -73,4 +73,7 @@ export const SCREENS = {
   // Other flows
   MY_ORDERS: 'my-orders',
   SET_GOAL: 'set-goal',
+  NOTIFICATIONS: 'notifications',
+  SMART_RESTOCK: 'smart-restock',
+  FINANCIAL_REPORTS: 'financial-reports',
 } as const; 

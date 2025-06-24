@@ -30,6 +30,11 @@ import CreditApplicationScreen from './screens/credit/CreditApplicationScreen';
 import CreditApprovedScreen from './screens/credit/CreditApprovedScreen';
 import CreditDeniedScreen from './screens/credit/CreditDeniedScreen';
 import ExportProfileScreen from './screens/credit/ExportProfileScreen';
+import FinancialReportsScreen from './screens/credit/FinancialReportsScreen';
+
+// Other screens
+import NotificationsScreen from './screens/main/NotificationsScreen';
+import SmartRestockScreen from './screens/business/SmartRestockScreen';
 
 const App: React.FC = () => {
   const { currentScreen, navigateTo, goBack } = useNavigation();
@@ -64,7 +69,7 @@ const App: React.FC = () => {
         return <SavingsScreen navigateTo={navigateTo} goBack={goBack} />;
       
       case SCREENS.INVENTORY:
-        return <InventoryScreen goBack={goBack} />;
+        return <InventoryScreen goBack={goBack} navigateTo={navigateTo} />;
       
       case SCREENS.BENEFITS:
         return <BenefitsScreen goBack={goBack} />;
@@ -92,6 +97,15 @@ const App: React.FC = () => {
       
       case SCREENS.EXPORT_PROFILE:
         return <ExportProfileScreen goBack={goBack} />;
+      
+      case SCREENS.NOTIFICATIONS:
+        return <NotificationsScreen goBack={goBack} />;
+      
+      case SCREENS.SMART_RESTOCK:
+        return <SmartRestockScreen goBack={goBack} navigateTo={navigateTo} />;
+      
+      case SCREENS.FINANCIAL_REPORTS:
+        return <FinancialReportsScreen goBack={goBack} />;
       
       default:
         return <LoginScreen navigateTo={navigateTo} />;

@@ -2,12 +2,14 @@ import React from 'react';
 import { Package } from 'lucide-react';
 import { Header, Card } from '../../components';
 import { mockProducts } from '../../utils/mockData';
+import { SCREENS } from '../../utils/constants';
 
 interface InventoryScreenProps {
   goBack: () => void;
+  navigateTo: (screen: string) => void;
 }
 
-const InventoryScreen: React.FC<InventoryScreenProps> = ({ goBack }) => {
+const InventoryScreen: React.FC<InventoryScreenProps> = ({ goBack, navigateTo }) => {
   return (
     <div className="min-h-screen bg-background-secondary">
       <Header
@@ -41,11 +43,17 @@ const InventoryScreen: React.FC<InventoryScreenProps> = ({ goBack }) => {
           </div>
         </Card>
 
-        <Card className="bg-warning/10 border border-warning/20">
-          <h3 className="font-semibold text-warning mb-2">📦 Próximamente</h3>
-          <p className="text-sm text-warning/90">
-            Alertas automáticas de reposición basadas en tus ventas registradas
+        <Card className="bg-info/10 border border-info/20">
+          <h3 className="font-semibold text-info mb-3">🚀 Reposición Inteligente</h3>
+          <p className="text-sm text-info mb-3">
+            Analiza tus ventas y recomienda qué productos reponer automáticamente
           </p>
+          <button 
+            onClick={() => navigateTo(SCREENS.SMART_RESTOCK)}
+            className="w-full bg-info text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+          >
+            Ver Recomendaciones
+          </button>
         </Card>
       </div>
     </div>
