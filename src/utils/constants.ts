@@ -29,7 +29,7 @@ export const COLORS = {
 // User levels
 export const USER_LEVELS = {
   EN_PROCESO: 'En proceso',
-  CONFIABLE: 'Confiable', 
+  CONFIABLE: 'Confianza en construcción', 
   RESPONSABLE: 'Responsable',
   FORMALIZADO: 'Formalizado',
 } as const;
@@ -60,6 +60,7 @@ export const SCREENS = {
   SAVINGS: 'savings',
   BENEFITS: 'benefits',
   REPORTS: 'reports',
+  EXPENSES: 'expenses',
   
   // Group flows
   PANDERO: 'pandero',

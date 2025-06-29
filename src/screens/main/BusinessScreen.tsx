@@ -22,8 +22,8 @@ const BusinessScreen: React.FC<BusinessScreenProps> = ({ navigateTo }) => {
             className="bg-surface p-6 rounded-xl shadow-card hover:shadow-elevated transition-shadow"
           >
             <BarChart3 className="text-primary mb-3" size={32} />
-            <h3 className="font-semibold text-text-primary mb-1">Registrar Ventas</h3>
-            <p className="text-sm text-gray-600">Anota tus ventas diarias</p>
+            <h3 className="font-semibold text-text-primary mb-1">Ventas y Gastos</h3>
+            <p className="text-sm text-gray-600">Registra ventas y gastos del negocio</p>
           </button>
 
           <button

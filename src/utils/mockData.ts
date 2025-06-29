@@ -129,58 +129,58 @@ export const mockPanderoMembers: PanderoMember[] = [
 ];
 
 export const mockProducts: Product[] = [
-  { 
-    id: '1', 
-    name: 'Coca Cola 500ml', 
-    category: 'Bebidas', 
-    price: 2.5, 
-    supplier: 'ISM', 
-    image: 'https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg',
-    stock: 15
+  {
+    id: '1',
+    name: 'Coca Cola 500ml',
+    category: 'Bebidas',
+    price: 2.50,
+    supplier: 'Inca Kola SA',
+    image: '',
+    stock: 24,
+    entryDate: '2024-01-10',
+    expiryDate: '2024-06-15'
   },
-  { 
+  {
     id: '2', 
-    name: 'Leche Gloria 1L', 
+    name: 'Pan Integral',
+    category: 'Panadería',
+    price: 0.50,
+    supplier: 'Panadería Local',
+    image: '',
+    stock: 2,
+    entryDate: '2024-01-14',
+    expiryDate: '2024-01-17'
+  },
+  {
+    id: '3',
+    name: 'Leche Gloria',
     category: 'Lácteos', 
-    price: 4.2, 
-    supplier: 'Gloria', 
-    image: 'https://images.pexels.com/photos/236010/pexels-photo-236010.jpeg',
-    stock: 8
+    price: 4.20,
+    supplier: 'Gloria SA',
+    image: '',
+    stock: 12,
+    entryDate: '2024-01-12',
+    expiryDate: '2024-02-12'
   },
-  { 
-    id: '3', 
-    name: 'Pan Tostado', 
-    category: 'Panadería', 
-    price: 1.5, 
-    supplier: 'Bimbo', 
-    image: 'https://images.pexels.com/photos/209206/pexels-photo-209206.jpeg',
-    stock: 3
+  {
+    id: '4',
+    name: 'Arroz Superior',
+    category: 'Granos',
+    price: 3.80,
+    supplier: 'Molinos SA',
+    image: '',
+    stock: 8,
+    entryDate: '2024-01-08',
   },
-  { 
-    id: '4', 
-    name: 'Arroz Superior 1kg', 
-    category: 'Granos', 
-    price: 3.8, 
-    supplier: 'Costeño', 
-    image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg',
-    stock: 25
+  {
+    id: '5',
+    name: 'Aceite Primor',
+    category: 'Aceites',
+    price: 7.50,
+    supplier: 'Alicorp',
+    image: '',
+    stock: 3,
+    entryDate: '2024-01-13',
+    expiryDate: '2024-12-15'
   },
-  { 
-    id: '5', 
-    name: 'Aceite Primor 1L', 
-    category: 'Aceites', 
-    price: 5.5, 
-    supplier: 'Alicorp', 
-    image: 'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg',
-    stock: 4
-  },
-  { 
-    id: '6', 
-    name: 'Detergente Ariel 1kg', 
-    category: 'Limpieza', 
-    price: 8.9, 
-    supplier: 'P&G', 
-    image: 'https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg',
-    stock: 12
-  }
 ]; 

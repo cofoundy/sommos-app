@@ -49,6 +49,8 @@ export interface Product {
   supplier: string;
   image: string;
   stock: number;
+  entryDate: string;
+  expiryDate?: string;
 }
 
 export interface Expense {
@@ -68,6 +70,13 @@ export interface CreditApplication {
 export interface NavigationState {
   currentScreen: string;
   screenHistory: string[];
+}
+
+export interface BusinessExpense {
+  id: string;
+  concept: string;
+  amount: number;
+  date: string;
 }
 
 // Component props interfaces
@@ -97,6 +106,7 @@ export interface InputProps {
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
+  onFocus?: () => void;
   disabled?: boolean;
   className?: string;
 }

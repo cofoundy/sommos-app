@@ -1,5 +1,5 @@
 import React from 'react';
-import { PiggyBank, TrendingUp, User, Bell } from 'lucide-react';
+import { PiggyBank, TrendingUp, User } from 'lucide-react';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import BottomTabBar from '../../components/BottomTabBar';
@@ -27,7 +27,7 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigateTo }) => {
             </div>
             <div>
               <h1 className="font-bold text-text-primary">SOMMOS</h1>
-              <p className="text-sm text-gray-600">Nivel: {mockUser.level}</p>
+              <p className="text-sm text-gray-600">Tu avance: {mockUser.level}</p>
             </div>
           </div>
           <button onClick={() => navigateTo(SCREENS.PROFILE)} className="relative">

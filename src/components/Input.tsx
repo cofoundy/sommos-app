@@ -6,6 +6,7 @@ const Input: React.FC<InputProps> = ({
   placeholder = '',
   value,
   onChange,
+  onFocus,
   disabled = false,
   className = '',
 }) => {
@@ -17,6 +18,7 @@ const Input: React.FC<InputProps> = ({
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      onFocus={onFocus}
       disabled={disabled}
       className={`${baseClasses} ${className}`}
     />
