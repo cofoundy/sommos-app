@@ -67,7 +67,7 @@ const App: React.FC = () => {
         return <SalesRegisterScreen goBack={goBack} />;
       
       case SCREENS.SAVINGS:
-        return <SavingsScreen navigateTo={navigateTo} goBack={goBack} />;
+        return <SavingsScreen goBack={goBack} />;
       
       case SCREENS.INVENTORY:
         return <InventoryScreen goBack={goBack} navigateTo={navigateTo} />;

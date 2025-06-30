@@ -3,14 +3,12 @@ import { PiggyBank } from 'lucide-react';
 import { Header, Card, Input, Button } from '../../components';
 import { SavingsEntry } from '../../utils/types';
 import { mockSavings, mockUser } from '../../utils/mockData';
-import { SCREENS } from '../../utils/constants';
 
 interface SavingsScreenProps {
-  navigateTo: (screen: string) => void;
   goBack: () => void;
 }
 
-const SavingsScreen: React.FC<SavingsScreenProps> = ({ navigateTo, goBack }) => {
+const SavingsScreen: React.FC<SavingsScreenProps> = ({ goBack }) => {
   const [savings, setSavings] = useState<SavingsEntry[]>(mockSavings);
   const [newSaving, setNewSaving] = useState({ amount: '', description: '' });
 
@@ -98,12 +96,23 @@ const SavingsScreen: React.FC<SavingsScreenProps> = ({ navigateTo, goBack }) => 
           </div>
         </Card>
 
-        <Button 
-          onClick={() => navigateTo(SCREENS.SET_GOAL)}
-          className="w-full"
-        >
-          Establecer Nueva Meta
-        </Button>
+        <Card className="bg-blue-50 border border-blue-200">
+          <h3 className="font-semibold text-info mb-2">🎯 Tu Meta Inteligente</h3>
+          <p className="text-sm text-blue-800 mb-3">
+            SOMMOS calcula tu meta automáticamente basándose en:
+          </p>
+          <ul className="space-y-1 text-sm text-blue-700">
+            <li>• Tu historial de ventas promedio</li>
+            <li>• Tu nivel de confianza actual</li>
+            <li>• Tus patrones de ahorro pasados</li>
+            <li>• Recomendaciones financieras personalizadas</li>
+          </ul>
+          <div className="mt-3 p-2 bg-blue-100 rounded-lg">
+            <p className="text-xs text-blue-600">
+              💡 La meta se actualiza automáticamente cada semana para mantenerte motivado y alcanzar tus objetivos financieros.
+            </p>
+          </div>
+        </Card>
       </div>
     </div>
   );
