@@ -36,8 +36,8 @@ export const USER_LEVELS = {
 
 // App configuration
 export const APP_CONFIG = {
-  name: 'SOMMOS',
-  tagline: 'Tu pandero digital de confianza',
+  name: 'Sommos Bodegas',
+  tagline: 'Tu app financiera de confianza',
   version: '1.0.0',
 } as const;
 

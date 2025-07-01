@@ -95,7 +95,7 @@ export const mockPanderoMembers: PanderoMember[] = [
     id: '1', 
     name: 'Dylan', 
     turn: 3, 
-    hasPaid: true, 
+    hasPaid: false, 
     amount: 50 
   },
   { 
